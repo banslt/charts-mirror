@@ -74,4 +74,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "auto commit charts"
-          file_pattern: "charts/*.tgz index.yaml"
+          file_pattern: "*.tgz index.yaml"
