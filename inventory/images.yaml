@@ -1,0 +1,6 @@
+images:
+  - name: confluent-operator
+    repo: confluentinc
+    versions:
+    - "0.581.34"
+    - "0.581.55"
