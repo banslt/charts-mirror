@@ -67,9 +67,9 @@ jobs:
       - name: retrieve artifacts
         uses: actions/download-artifact@v3
         with:
-          path: charts/
+          path: ./
       - name: build index
-        run:  helm repo index --url https://banslt.github.io/charts-mirror/ charts/
+        run:  helm repo index --url https://banslt.github.io/charts-mirror/ ./
       - name: commit charts
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
