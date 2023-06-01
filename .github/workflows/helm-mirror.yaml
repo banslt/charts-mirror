@@ -41,6 +41,7 @@ jobs:
           helm repo add source ${{ matrix.charts.repo }}
           for version in ${{ matrix.charts.versions }}
           do
+            echo "~> pulling \"${{ matrix.charts.name }}\" version: ${version}"
             helm pull source/${{ matrix.charts.name }} --version $version
           done
       - name: store as artifact
