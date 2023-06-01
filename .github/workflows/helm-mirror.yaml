@@ -54,6 +54,8 @@ jobs:
     needs:
       - build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: retrieve artifacts
         uses: actions/download-artifact@v3
@@ -64,5 +66,5 @@ jobs:
       - name: commit charts
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit: "auto commit charts"
+          commit_message: "auto commit charts"
           file_pattern: "charts/*.tgz index.yaml"
