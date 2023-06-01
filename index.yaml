@@ -8,7 +8,7 @@ entries:
         - "[Deprecated]: Argo RBAC configuration via server.rbacConfig"
     apiVersion: v2
     appVersion: v2.4.15
-    created: "2023-06-01T16:11:08.978799147Z"
+    created: "2023-06-01T16:37:56.386841665Z"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -38,7 +38,7 @@ entries:
         - [Changed]: Update redis-ha dependency for better configuration options
     apiVersion: v2
     appVersion: v2.4.3
-    created: "2023-06-01T16:11:08.968120835Z"
+    created: "2023-06-01T16:37:56.375812652Z"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -67,7 +67,7 @@ entries:
         - "[Fixed]: Add missing NetworkPolicy for ApplicationSet and Notifications"
     apiVersion: v2
     appVersion: v2.3.1
-    created: "2023-06-01T16:11:08.957634626Z"
+    created: "2023-06-01T16:37:56.358541462Z"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -96,7 +96,7 @@ entries:
         - "[Changed]: added notifications.metrics.serviceMonitor.selector value"
     apiVersion: v2
     appVersion: v2.3.1
-    created: "2023-06-01T16:11:08.948951753Z"
+    created: "2023-06-01T16:37:56.350098623Z"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -128,7 +128,7 @@ entries:
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
     appVersion: v1.9.1
-    created: "2023-06-01T16:11:08.986524601Z"
+    created: "2023-06-01T16:37:56.393993368Z"
     description: A Helm chart for cert-manager
     digest: 46273177b5ca6930af8047cd52bf0b784c8482ac042e7812d08643c2898692d5
     home: https://github.com/cert-manager/cert-manager
@@ -156,7 +156,7 @@ entries:
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
     appVersion: v1.8.0
-    created: "2023-06-01T16:11:08.98347454Z"
+    created: "2023-06-01T16:37:56.39086688Z"
     description: A Helm chart for cert-manager
     digest: 74fac259e75fa8230328d1223882f3470dc49377e8c548384b4680dca2d596ce
     home: https://github.com/cert-manager/cert-manager
@@ -178,7 +178,7 @@ entries:
   confluent-for-kubernetes:
   - apiVersion: v1
     appVersion: 2.5.2
-    created: "2023-06-01T16:11:09.009215653Z"
+    created: "2023-06-01T16:37:56.417524536Z"
     description: A Helm chart to deploy Confluent for Kubernetes
     digest: c9ec53550bddf1565896b64d2e5b0f057d0b69a550f647a43d5dc02a4661eec9
     home: https://www.confluent.io/
@@ -198,7 +198,7 @@ entries:
     version: 0.581.55
   - apiVersion: v1
     appVersion: 2.5.1
-    created: "2023-06-01T16:11:08.998073731Z"
+    created: "2023-06-01T16:37:56.406444622Z"
     description: A Helm chart to deploy Confluent for Kubernetes
     digest: 8e00aff88ef4a2847ff9a512ab3f3b9ca32d45bfbffd4bf37366c1e96e4467b1
     home: https://www.confluent.io/
@@ -219,7 +219,7 @@ entries:
   datadog:
   - apiVersion: v1
     appVersion: "7"
-    created: "2023-06-01T16:11:09.017186112Z"
+    created: "2023-06-01T16:37:56.425250155Z"
     dependencies:
     - condition: clusterAgent.metricsProvider.useDatadogMetrics
       name: datadog-crds
@@ -252,7 +252,7 @@ entries:
   external-secrets:
   - apiVersion: v2
     appVersion: v0.5.6
-    created: "2023-06-01T16:11:09.020456677Z"
+    created: "2023-06-01T16:37:56.428266841Z"
     description: External secret management for Kubernetes
     digest: 6fe52ceffba6843cd423dfdbc1886d78d93cdc8bf0882eb9899736176272f3ca
     home: https://github.com/external-secrets/external-secrets
@@ -271,7 +271,7 @@ entries:
     version: 0.5.6
   - apiVersion: v2
     appVersion: v0.3.11
-    created: "2023-06-01T16:11:09.018142631Z"
+    created: "2023-06-01T16:37:56.426165781Z"
     description: External secret management for Kubernetes
     digest: 84b45aae110d07a904a4ddfe86fc1ed5d1110d369a79db0b2a1eb25614ac6b0b
     home: https://github.com/external-secrets/external-secrets
@@ -291,7 +291,7 @@ entries:
   gatekeeper:
   - apiVersion: v2
     appVersion: v3.11.0
-    created: "2023-06-01T16:11:09.026068089Z"
+    created: "2023-06-01T16:37:56.433341785Z"
     description: A Helm chart for Gatekeeper
     digest: 236500908ba791a47d4cb2ca05b173ce041e223ee047cb78c3046602cf92cd58
     home: https://github.com/open-policy-agent/gatekeeper
@@ -306,7 +306,7 @@ entries:
     version: 3.11.0
   - apiVersion: v2
     appVersion: v3.10.0
-    created: "2023-06-01T16:11:09.023991347Z"
+    created: "2023-06-01T16:37:56.431434431Z"
     description: A Helm chart for Gatekeeper
     digest: 9c8e618c122b9e43c5d4d1afd4d5596b68508b99bf094d1612d6940f55bc22f2
     home: https://github.com/open-policy-agent/gatekeeper
@@ -321,7 +321,7 @@ entries:
   kong:
   - apiVersion: v2
     appVersion: "3.1"
-    created: "2023-06-01T16:11:09.0567563Z"
+    created: "2023-06-01T16:37:56.461827093Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -344,7 +344,7 @@ entries:
     version: 2.16.5
   - apiVersion: v2
     appVersion: "3.1"
-    created: "2023-06-01T16:11:09.045655879Z"
+    created: "2023-06-01T16:37:56.452112918Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -367,7 +367,7 @@ entries:
     version: 2.14.0
   - apiVersion: v2
     appVersion: "2.8"
-    created: "2023-06-01T16:11:09.036477596Z"
+    created: "2023-06-01T16:37:56.443248166Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -388,4 +388,4 @@ entries:
     urls:
     - https://banslt.github.io/charts-mirror/kong/kong-2.12.0.tgz
     version: 2.12.0
-generated: "2023-06-01T16:11:08.925769192Z"
+generated: "2023-06-01T16:37:56.331203986Z"
