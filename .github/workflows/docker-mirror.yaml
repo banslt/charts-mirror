@@ -30,7 +30,6 @@ jobs:
         run: |
           images=$(cat inventory/images.yaml | yq .images -o json)
           echo ::set-output name=matrix::${images}
-
   deploy:
     needs:
       - setup
