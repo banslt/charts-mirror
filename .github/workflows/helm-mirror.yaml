@@ -1,0 +1,77 @@
+name: Helm Mirroring
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "inventory/charts.yaml"
+      - ".github/workflows/helm-mirror.yaml"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "inventory/charts.yaml"
+      - ".github/workflows/helm-mirror.yaml"
+
+  workflow_dispatch:
+  
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: chrisdickinson/setup-yq@latest
+        with:
+          yq-version: v4.24.2
+      - name: Helm mirror matrix compute
+        id: matrix
+        run: |
+          charts=$(cat inventory/charts.yaml | yq .charts -o json)
+          echo ::set-output name=matrix::${charts}
+
+  build:
+    needs:
+      - setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        charts: ${{ fromJson(needs.setup.outputs.matrix) }}
+    steps:
+      - name: Install jq
+        run: sudo apt-get install -y jq
+      - uses: actions/checkout@v3
+      - name: helm pull
+        run: |
+          helm repo add source ${{ matrix.charts.repo }}
+          for version in $(echo '${{ toJson(matrix.charts.versions) }}' | jq -r '.[]' )
+          do
+            echo "~> pulling \"${{ matrix.charts.name }}\" version: ${version}"
+            helm pull source/${{ matrix.charts.name }} --version $version
+          done
+      - name: store as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.charts.name }} 
+          path: ./*.tgz
+        
+  deploy:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: retrieve artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: charts/
+      - name: build index
+        run:  helm repo index --url https://banslt.github.io/charts-mirror/ charts/
+      - name: commit charts
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "auto commit charts"
+          file_pattern: "charts/*.tgz index.yaml"

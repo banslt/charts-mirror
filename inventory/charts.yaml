@@ -1,0 +1,13 @@
+charts:
+  - name: confluent-for-kubernetes
+    repo: https://packages.confluent.io/helm
+    versions:
+      - "0.581.55"
+      - "0.581.34"
+  - name: argo-cd
+    repo: https://argoproj.github.io/argo-helm
+    versions:
+      - "5.7.0"
+      - "4.9.11"
+      - "4.2.1"
+      - "4.1.0"
