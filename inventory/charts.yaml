@@ -11,3 +11,28 @@ charts:
       - "4.9.11"
       - "4.2.1"
       - "4.1.0"
+  - name: datadog
+    repo: https://helm.datadoghq.com
+    versions:
+      - "3.28.0"
+  - name: external-secrets
+    repo: https://charts.external-secrets.io/
+    versions:
+      - "0.5.6"
+      - "0.3.11"
+  - name: cert-manager
+    repo: https://charts.jetstack.io
+    versions:
+      - "v1.9.1"
+      - "v1.8.0"
+  - name: gatekeeper
+    repo: https://open-policy-agent.github.io/gatekeeper/charts
+    versions:
+      - "3.11.0"
+      - "3.10.0"
+  - name: kong
+    repo: https://charts.konghq.com
+    versions:
+      - "2.16.5"
+      - "2.14.0"
+      - "2.12.0"
