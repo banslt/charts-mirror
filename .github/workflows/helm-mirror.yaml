@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.charts.name }} 
-          path: charts/*.tgz
+          path: ./*.tgz
         
   deploy:
     needs:
