@@ -39,7 +39,7 @@ jobs:
       - name: helm pull
         run: |
           helm repo add source ${{ matrix.charts.repo }}
-          for version in ${{ toJson(matrix.charts.versions)}}
+          for version in $(echo ${{ toJson(matrix.charts.versions) }} | jq -r .[] )
           do
             echo "~> pulling \"${{ matrix.charts.name }}\" version: ${version}"
             helm pull source/${{ matrix.charts.name }} --version $version
