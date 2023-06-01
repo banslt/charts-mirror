@@ -1,0 +1,50 @@
+name: Docker Mirroring
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "inventory/images.yaml"
+      - ".github/workflows/docker-mirror.yaml"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "inventory/images.yaml"
+      - ".github/workflows/docker-mirror.yaml"
+
+  workflow_dispatch:
+  
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: chrisdickinson/setup-yq@latest
+        with:
+          yq-version: v4.24.2
+      - name: Docker mirror matrix compute
+        id: matrix
+        run: |
+          images=$(cat inventory/images.yaml | yq .charts -o json)
+          echo ::set-output name=matrix::${images}
+
+  deploy:
+    needs:
+      - setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        charts: ${{ fromJson(needs.setup.outputs.matrix) }}
+    steps:
+      - name: Install jq & skopeo
+        run: sudo apt-get install -y jq skopeo
+      - uses: actions/checkout@v3
+      - name: Copy image
+        run: |
+          for version in $(echo '${{ toJson(matrix.charts.versions) }}' | jq -r '.[]' )
+          do
+            skopeo copy --dest-creds=${{ secrets.oci_creds }} docker://${{ matrix.charts.repo }/${{ matrix.charts.name }}:${version} docker://ghcr.io/banslt/${{ matrix.charts.name }}:${version}
+          done

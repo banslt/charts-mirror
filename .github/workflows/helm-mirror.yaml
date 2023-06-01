@@ -3,9 +3,15 @@ on:
   push:
     branches:
       - "main"
+    paths:
+      - "inventory/charts.yaml"
+      - ".github/workflows/helm-mirror.yaml"
   pull_request:
     branches:
       - "main"
+    paths:
+      - "inventory/charts.yaml"
+      - ".github/workflows/helm-mirror.yaml"
 
   workflow_dispatch:
   
