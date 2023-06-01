@@ -38,15 +38,15 @@ jobs:
       - uses: actions/checkout@v3
       - name: helm pull
         run: |
-          helm repo add source ${{ matrix.charts.repo}}
-          for version in $(echo ${{ matrix.charts}} | jq -r .versions)
+          helm repo add source ${{ matrix.charts.repo }}
+          for version in ${{ matrix.charts.versions }}
           do
-            helm pull source/$(echo ${{ matrix.charts}} | jq -r .name) --version $version
+            helm pull source/${{ matrix.charts.name }} --version $version
           done
       - name: store as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: $(echo ${{ matrix.charts}} | jq .name) 
+          name: ${{ matrix.charts.name }} 
           path: charts/*.tgz
         
   deploy:
