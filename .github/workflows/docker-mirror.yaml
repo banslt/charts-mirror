@@ -1,11 +1,11 @@
 name: Docker Mirroring
 on:
-  push:
-    branches:
-      - "main"
-    paths:
-      - "inventory/images.yaml"
-      - ".github/workflows/docker-mirror.yaml"
+  # push:
+  #   branches:
+  #     - "main"
+  #   paths:
+  #     - "inventory/images.yaml"
+  #     - ".github/workflows/docker-mirror.yaml"
   pull_request:
     branches:
       - "main"
@@ -45,5 +45,5 @@ jobs:
         run: |
           for version in $(echo '${{ toJson(matrix.charts.versions) }}' | jq -r '.[]' )
           do
-            skopeo copy --dest-creds=${{ secrets.oci_creds }} docker://'${{ matrix.charts.repo }}'/${{ matrix.charts.name }}:${version} docker://ghcr.io/banslt/${{ matrix.charts.name }}:${version}
+            skopeo copy --dest-creds=${{ secrets.oci_creds }} docker://'${{ matrix.charts.repo }}'${{ matrix.charts.name }}:${version} docker://ghcr.io/banslt/${{ matrix.charts.name }}:${version}
           done
