@@ -1,11 +1,11 @@
 name: Docker Mirroring
 on:
-  push:
-    branches:
-      - "main"
-    paths:
-      - "inventory/images.yaml"
-      - ".github/workflows/docker-mirror.yaml"
+  # push:
+  #   branches:
+  #     - "main"
+  #   paths:
+  #     - "inventory/images.yaml"
+  #     - ".github/workflows/docker-mirror.yaml"
   pull_request:
     branches:
       - "main"

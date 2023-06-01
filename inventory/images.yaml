@@ -2,5 +2,36 @@ images:
   - name: confluent-operator
     repo: confluentinc
     versions:
-    - "0.581.34"
-    - "0.581.55"
+      - "0.581.34"
+      - "0.581.55"
+  - name: gatekeeper
+    repo: openpolicyagent
+    versions:
+      - "v3.11.0"
+      - "v3.10.0"
+      - "v3.7.0"
+  - name: argocd
+    repo: argoproj
+    versions:
+      - "v2.4.15"
+      - "v2.3.2"
+      - "v2.3.7"
+  - name: agent
+    repo: datadog
+    versions: []
+  - name: kong
+    repo: ""
+    versions:
+      - "2.7"
+  - name: cert-manager-controller
+    repo: "quay.io/jetstack"
+    versions:
+      - "v1.9.1"
+      - "v1.8.0"
+  - name: helm-operator
+    repo: quay.io/operator-framework
+    versions:
+      - "v1.27.1"
+      - "v1.28.0"
+      - "v1.27.0"
+      - "v1.26.0"
