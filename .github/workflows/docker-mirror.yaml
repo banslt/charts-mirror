@@ -45,5 +45,14 @@ jobs:
         run: |
           for version in $(echo '${{ toJson(matrix.charts.versions) }}' | jq -r '.[]' )
           do
+            if [[ $(skopeo list-tags --creds=${{ secrets.oci_creds }} docker://ghcr.io/banslt/${{ matrix.charts.name }} | jq -e . > /dev/null 2>&1; echo ${PIPESTATUS[1]}) != '0' ]]; then
+              echo "~> new image: ${{ matrix.charts.name }}:${version}"
+              skopeo copy --dest-creds=${{ secrets.oci_creds }} docker://'${{ matrix.charts.repo }}'${{ matrix.charts.name }}:${version} docker://ghcr.io/banslt/${{ matrix.charts.name }}:${version}
+              continue
+            fi
+            if [ $(skopeo list-tags --creds=${{ secrets.oci_creds }} docker://ghcr.io/banslt/${{ matrix.charts.name }} | jq ".Tags | any (.==\"${version}\")") == "true" ]; then
+              echo "~> skipping: ${{ matrix.charts.name }}:${version} (already existing)"
+              continue
+            fi
             skopeo copy --dest-creds=${{ secrets.oci_creds }} docker://'${{ matrix.charts.repo }}'${{ matrix.charts.name }}:${version} docker://ghcr.io/banslt/${{ matrix.charts.name }}:${version}
           done
