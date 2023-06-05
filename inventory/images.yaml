@@ -10,6 +10,12 @@ images:
       - "v3.11.0"
       - "v3.10.0"
       - "v3.7.0"
+  - name: gatekeeper-crds
+    repo: openpolicyagent/
+    versions:
+      - "v3.11.0"
+      - "v3.10.0"
+      - "v3.7.0"
   - name: argocd
     repo: argoproj/
     versions:
@@ -24,6 +30,21 @@ images:
     versions:
       - "2.7"
   - name: cert-manager-controller
+    repo: quay.io/jetstack/
+    versions:
+      - "v1.9.1"
+      - "v1.8.0"
+  - name: cert-manager-cainjector
+    repo: quay.io/jetstack/
+    versions:
+      - "v1.9.1"
+      - "v1.8.0"
+  - name: cert-manager-webhook
+    repo: quay.io/jetstack/
+    versions:
+      - "v1.9.1"
+      - "v1.8.0"
+  - name: cert-manager-ctl
     repo: quay.io/jetstack/
     versions:
       - "v1.9.1"
