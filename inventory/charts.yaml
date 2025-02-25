@@ -37,3 +37,7 @@ charts:
       - "2.16.5"
       - "2.14.0"
       - "2.12.0"
+  - name: crossplane
+    repo: https://charts.crossplane.io/stable
+    versions:
+      - "1.19.0"
